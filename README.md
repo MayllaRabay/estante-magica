@@ -32,8 +32,8 @@ $ cd estante-magica
 # Baixe todas as dependências e pacotes da aplicação
 $ npm install
 
-# Execute a aplicação em modo de desenvolvimento
-$ npm start
+# Execute a aplicação em modo de desenvolvimento pelo Yarn
+$ yarn start
 
 # A aplicação será aberta na porta:3000 - acesse em seu navegador
 http://localhost:3000
