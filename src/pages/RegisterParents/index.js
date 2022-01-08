@@ -1,6 +1,13 @@
+import FormContainer from '../../components/FormContainer';
+import IconParents from '../../assets/icon-parents.svg'
+
 function RegisterParents() {
   return (
-    <h1>Registro Responsável</h1>
+    <FormContainer
+      img={IconParents}
+      title="Olá, responsável!"
+      role="parents"
+    />
   );
 }
 

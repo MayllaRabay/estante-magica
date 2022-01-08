@@ -1,6 +1,13 @@
+import FormContainer from '../../components/FormContainer';
+import IconManager from '../../assets/icon-manager.svg';
+
 function RegisterManager() {
   return (
-    <h1>Registro Gestor(a)</h1>
+    <FormContainer
+      img={IconManager}
+      title="Criar conta de gestor(a)"
+      role="manager"
+    />
   );
 }
 

@@ -1,6 +1,13 @@
+import FormContainer from "../../components/FormContainer";
+import IconTeacher from '../../assets/icon-teacher.svg';
+
 function RegisterTeacher() {
   return (
-    <h1>Registro Professor(a)</h1>
+    <FormContainer
+      img={IconTeacher}
+      title="Criar conta de professor(a)"
+      role="teacher"
+    />
   );
 }
 

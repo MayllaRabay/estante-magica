@@ -1,5 +1,4 @@
 .item__wrapper {
-  background-color: var(--color-white);
   border: 2px solid var(--color-gray-200);
   border-radius: 1rem;
   display: flex;
@@ -7,9 +6,15 @@
   align-items: center;
   gap: 0.875rem;
   padding: 1.5rem 3.125rem;
+  transition: all .5s;
 
   &:hover {
     background-color: var(--color-theme);
+  }
+
+  &:active {
+    border: 2px solid var(--color-purple-800);
+    color: var(--color-purple-800);
   }
 
   .img__container {
@@ -23,7 +28,7 @@
   }
 
   h4 {
-    color: var(--color-purple-500);
+    color: var(--color-purple-400);
     letter-spacing: 0.02rem;
     text-decoration: none;
   }
