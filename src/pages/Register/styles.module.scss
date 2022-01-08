@@ -1,0 +1,40 @@
+.content__wrapper {
+  background-color: var(--color-white-50);
+  border: 2px solid var(--color-gray-400);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3.5rem;
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  footer {
+    color: var(--color-gray-400);
+    font-weight: bold;
+
+    button {
+      all: unset;
+      color: var(--color-purple-500);
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+}
