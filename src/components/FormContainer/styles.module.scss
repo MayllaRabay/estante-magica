@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  margin: 2rem 1rem;
   padding: 3.5rem;
   position: relative;
 
@@ -13,69 +14,11 @@
     width: 90px;
     height: 100px;
     position: absolute;
-    top: -20%;
+    top: -50px;
 
     img {
       width: 100%;
       height: auto;
     }
-  }
-
-  .button__wrapper {
-    display: flex;
-    flex-direction: row-reverse;
-    column-gap: 2rem;
-    justify-content: center;
-
-    button {
-      all: unset;
-      border: 2px solid var(--color-purple-400);
-      border-radius: 2.5rem;
-      font-weight: bold;
-      padding: 0.75rem;
-      text-align: center;
-      transition: all .5s;
-      width: 12rem;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .main__button {
-      background-color: var(--color-purple-400);
-      color: var(--color-white);
-      
-      &:hover {
-        background-color: var(--color-purple-600);
-      }
-
-      &:active {
-        background-color: var(--color-purple-800);
-      }
-    }
-
-    .secondary__button {
-      background-color: var(--color-white);
-      color: var(--color-purple-400);
-
-      &:hover {
-        background-color: var(--color-theme);
-        border: 2px solid var(--color-purple-600);
-        color: var(--color-purple-600);
-      }
-
-      &:active {
-        border: 2px solid var(--color-purple-800);
-        color: var(--color-purple-800);
-      }
-    }
-  }
-}
-
-@media (max-width: 720px) {
-  .button__wrapper {
-    flex-wrap: wrap;
-    row-gap: 1rem;
   }
 }

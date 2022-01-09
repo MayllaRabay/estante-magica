@@ -1,0 +1,89 @@
+form {
+  .form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    
+    label {
+      color: var(--color-gray-600);
+      font-weight: bold;
+    }
+
+    .field__message {
+      color: var(--color-gray-400);
+      font-size: 0.875rem;
+    }
+
+    .error__message {
+      color: var(--color-red);
+      font-size: 0.875rem;
+    }
+    
+    .terms__field {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+  }
+
+  .button__wrapper {
+    display: flex;
+    column-gap: 2rem;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-top: 2rem;
+
+    button {
+      all: unset;
+      border: 2px solid var(--color-purple-400);
+      border-radius: 2.5rem;
+      font-weight: bold;
+      padding: 0.75rem;
+      text-align: center;
+      transition: all .5s;
+      width: 12rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .main__button {
+      background-color: var(--color-purple-400);
+      color: var(--color-white);
+      
+      &:hover {
+        background-color: var(--color-purple-600);
+      }
+
+      &:active {
+        background-color: var(--color-purple-800);
+      }
+    }
+
+    .secondary__button {
+      background-color: var(--color-white);
+      color: var(--color-purple-400);
+
+      &:hover {
+        background-color: var(--color-theme);
+        border: 2px solid var(--color-purple-600);
+        color: var(--color-purple-600);
+      }
+
+      &:active {
+        border: 2px solid var(--color-purple-800);
+        color: var(--color-purple-800);
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .button__wrapper {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+}
