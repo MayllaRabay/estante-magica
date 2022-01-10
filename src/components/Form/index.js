@@ -24,7 +24,7 @@ function Form({ role }) {
 
   const mockEmails = [
     "email@email.com",
-    "teste@email.com.",
+    "teste@email.com",
     "maylla@email.com",
     "estante-magica@email.com.br",
     "marcelo@admin.com.br",
