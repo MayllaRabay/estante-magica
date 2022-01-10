@@ -1,0 +1,64 @@
+.content__desktop {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-purple-50);
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 4rem 1rem 1rem 1rem;
+  padding: 3.5rem;
+  position: relative;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .close__button {
+    all: unset;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    &:hover {
+      cursor: pointer;
+      //Mudando a cor do svg utilizando um fitro CSS
+      //Link de referência: https://codepen.io/sosuke/pen/Pjoqqp
+      img {
+        filter: invert(22%) sepia(0%) saturate(0%) hue-rotate(219deg) brightness(94%) contrast(94%);
+      }
+    }
+  }
+}
+
+.content__mobile {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-align: center;
+    margin-top: 1.2rem;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .content__mobile {
+    display: flex;
+  }
+  .content__desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .content__mobile {
+    display: none;
+  }
+  .content__desktop {
+    display: flex;
+  }
+}

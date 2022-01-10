@@ -1,0 +1,36 @@
+.content__mobile, .content__desktop {
+  display: flex;
+  column-gap: 2rem;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+a {
+  color: var(--color-purple-400);
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 720px) {
+  .content__mobile {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+  .content__desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .content__mobile {
+    display: none;
+  }
+  .content__desktop {
+    display: flex;
+  }
+}
