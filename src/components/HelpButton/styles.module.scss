@@ -1,0 +1,57 @@
+.content__wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  >button {
+    all: unset;
+    display: flex;
+
+    &:hover, &:focus  {
+      cursor: pointer;
+      //Mudando a cor do svg utilizando um fitro CSS
+      //Link de referência: https://codepen.io/sosuke/pen/Pjoqqp
+      img {
+        filter: invert(25%) sepia(25%) saturate(2084%) hue-rotate(220deg) brightness(89%) contrast(90%);
+      }
+    }
+  }
+
+  .modal__helper {
+    background-image: url("../../assets/form/baloon-help.svg");
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    left: 1.2rem;
+    width: 22rem;
+    z-index: 1;
+
+    >div {
+      color: var(--color-purple-400);
+      font-size: 0.875rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin: 0.2rem;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content__wrapper {
+    .modal__helper {
+      background-image: url("../../assets/form/baloon-help-mobile.svg");
+      width: 13rem;
+    }
+  }
+}
