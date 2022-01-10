@@ -8,7 +8,15 @@ function RegisterError() {
   const navigate = useNavigate();
 
   function backButton() {
-    navigate("/");
+    const url = window.location.href;
+    
+    if(url.includes("gestor")) {
+      navigate("/cadastro-gestor");
+    } else if(url.includes("professor")) {
+      navigate("/cadastro-professor");
+    } else {
+      navigate("/");
+    }
   }
 
   return(

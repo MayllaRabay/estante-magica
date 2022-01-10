@@ -22,19 +22,36 @@ function Form({ role }) {
   const [phone, setPhone] = useState("");
   const [schoolType, setSchoolType] = useState("");
 
+  const mockEmails = [
+    "email@email.com",
+    "teste@email.com.",
+    "maylla@email.com",
+    "estante-magica@email.com.br",
+    "marcelo@admin.com.br",
+    "luiz@admin.com.br",
+  ];
+
   function onSubmit(data) {
-    console.log(data);
-
-    if(role === "teacher") {
-      navigate("/cadastro-professor/sucesso");
-    }
-
-    if(role === "manager") {
-      navigate("/cadastro-gestor/sucesso");
-    }
+    const isEmailNew = mockEmails.findIndex((email) => email === data.email);
     
     if(role === "parents") {
       navigate("/cadastro-responsavel/sucesso");
+    }
+
+    if(role === "teacher") {
+      if(isEmailNew === -1) {
+        navigate("/cadastro-professor/sucesso");
+      } else {
+        navigate("/cadastro-professor/erro-email");
+      }
+    }
+
+    if(role === "manager") {
+      if(isEmailNew === -1) {
+        navigate("/cadastro-gestor/sucesso");
+      } else {
+        navigate("/cadastro-gestor/erro-email");
+      }
     }
   }
 
