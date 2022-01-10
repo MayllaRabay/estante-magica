@@ -3,6 +3,11 @@ form {
     display: flex;
     align-content: center;
     column-gap: 1.5rem;
+    width: 100%;
+
+    >div {
+      width: 100%;
+    }
   }
   
   .form__field {
@@ -10,7 +15,7 @@ form {
     flex-direction: column;
     gap: 0.25rem;
     margin-bottom: 1rem;
-    
+
     input {
       color: var(--color-gray-400);
       font-family: 'Source Sans Pro', sans-serif;
@@ -21,21 +26,29 @@ form {
       color: var(--color-gray-600);
       font-weight: bold;
     }
-
+    
     .field__message {
       color: var(--color-gray-400);
       font-size: 0.875rem;
     }
-
+    
     .error__message {
       color: var(--color-red);
       font-size: 0.875rem;
     }
     
+    .phone__label {
+      display: flex;
+      align-items: center;
+      column-gap: 0.2rem;
+    }
+
     .phone__field {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      width: 100%;
       
       >div {
         color: var(--color-gray-400);
@@ -44,10 +57,14 @@ form {
     }
     
     .terms__field {
+      align-items: center;
       display: flex;
       flex-direction: row-reverse;
       justify-content: flex-end;
-      gap: 0.5rem;
+    }
+
+    .help__button {
+      all: unset;
     }
   }
   
@@ -57,59 +74,24 @@ form {
     flex-direction: row-reverse;
     justify-content: center;
     margin-top: 2rem;
-    
-    button {
-      all: unset;
-      border: 2px solid var(--color-purple-400);
-      border-radius: 2.5rem;
-      font-weight: bold;
-      padding: 0.75rem;
-      text-align: center;
-      transition: all .5s;
-      width: 12rem;
-      
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    
-    .main__button {
-      background-color: var(--color-purple-400);
-      color: var(--color-white);
-      
-      &:hover {
-        background-color: var(--color-purple-600);
-      }
-      
-      &:active {
-        background-color: var(--color-purple-800);
-      }
-    }
-    
-    .secondary__button {
-      background-color: var(--color-white);
-      color: var(--color-purple-400);
-      
-      &:hover {
-        background-color: var(--color-theme);
-        border: 2px solid var(--color-purple-600);
-        color: var(--color-purple-600);
-      }
-      
-      &:active {
-        border: 2px solid var(--color-purple-800);
-        color: var(--color-purple-800);
-      }
-    }
   }
 }
 
-@media (max-width: 720px) {
-  .form__block {
-    flex-wrap: wrap;
+//Para editar os itens do dropdown
+.phone__label {
+  display: flex;
+  align-items: center;
+  column-gap: 0.2rem;
+}
 
-    >div{
-      width: 100%;
+@media (max-width: 720px) {
+  form {
+    .form__block {
+      flex-wrap: wrap;
+  
+      >div{
+        width: 100%;
+      }
     }
   }
 

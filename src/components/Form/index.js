@@ -1,4 +1,4 @@
-import { MenuItem, Select, TextField } from '@mui/material';
+import { Checkbox, MenuItem, Select, TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import flagBrazil from '../../assets/form/flag-brazil.svg';
 import flagColombia from '../../assets/form/flag-colombia.svg';
 import flagMexico from '../../assets/form/flag-mexico.svg';
+import checkedIcon from '../../assets/form/icon-check.svg';
+import uncheckedIcon from '../../assets/form/icon-uncheck.svg';
+import { formatPhone } from '../../utils/formatters';
+import Button from '../Button';
+import HelpButton from '../HelpButton';
 import PasswordInput from '../PasswordInput';
 import styles from './styles.module.scss';
 
@@ -14,10 +19,23 @@ function Form({ role }) {
   const navigate = useNavigate();
 
   const [countryCode, setCountryCode] = useState("+55");
-  const [schoolType, setSchoolType] = useState();
+  const [phone, setPhone] = useState("");
+  const [schoolType, setSchoolType] = useState("");
 
   function onSubmit(data) {
     console.log(data);
+
+    if(role === "teacher") {
+      navigate("/cadastro-professor/sucesso");
+    }
+
+    if(role === "manager") {
+      navigate("/cadastro-gestor/sucesso");
+    }
+    
+    if(role === "parents") {
+      navigate("/cadastro-responsavel/sucesso");
+    }
   }
 
   function backButton() {
@@ -34,10 +52,8 @@ function Form({ role }) {
 
   const menuItemStyle = {
     color: 'var(--color-gray-400)',
-    display: 'flex',
-    alignContent: 'center',
     fontFamily: 'Source Sans Pro',
-    gap: '0.3rem',
+    height: '2.49rem'
   };
 
   const countryCodes = [
@@ -60,9 +76,13 @@ function Form({ role }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form__field}>
           <label htmlFor="name">Nome</label>
-          <TextField id="name" type="text" color="secondary" 
-            placeholder="Nome completo" variant="outlined"
-            {...register("name", { required: true, minLength: 6 })}
+          <TextField 
+            id="name"
+            type="text"
+            color="secondary" 
+            placeholder="Nome completo"
+            variant="outlined"
+            {...register("name", { required: true })}
             error={!!errors.name}
           />
           {errors.name && <div className={styles.error__message}>Campo obrigatório</div>}
@@ -70,52 +90,88 @@ function Form({ role }) {
 
         <div className={styles.form__block}>
           <div className={styles.form__field}>
-            <label htmlFor="phone">Celular</label>
+            <label htmlFor="phone">
+              <div className={styles.phone__label}>
+                Celular 
+                <HelpButton />
+              </div>
+            </label>
             <div className={styles.phone__field}>
-              <Select id="countryCode" color="secondary"
+              <Select 
+                id="countryCode"
+                color="secondary"
+                sx={menuItemStyle}
                 {...register("countryCode")}
-                value={countryCode} onChange={(e) => setCountryCode(e.target.value)}
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
                 error={!!errors.countryCode}
               >
                 {countryCodes.map((option) => (
                   <MenuItem key={option.value} value={option.value} sx={menuItemStyle}>
-                    <img src={option.flag} alt={option.alt} />
-                    {option.value}
+                    <div className={styles.phone__label}>
+                      <img src={option.flag} alt={option.alt} />
+                      <div>{option.value}</div>
+                    </div>
                   </MenuItem>
                 ))}
               </Select>
-              <TextField id="phone" type="text" color="secondary"
-                placeholder="(00) 00000-0000" variant="outlined" fullWidth
-                {...register("phone", { required: true, minLength: 11, maxLength: 11 })}
+              <TextField 
+                id="phone"
+                type="text"
+                color="secondary" 
+                placeholder="(00) 00000-0000"
+                variant="outlined"
+                fullWidth
+                {...register("phone", { required: true, minLength: 14, maxLength: 14, pattern: /^[0-9()-]+$/i })}
+                value={phone}
+                onChange={(e) => setPhone(formatPhone(e.target.value))}
+                inputProps={{ maxLength: 14 }}
                 error={!!errors.phone}
               />
             </div>
-            {errors.phone && <div className={styles.error__message}>Campo obrigatório</div>}
+            <div className={styles.error__message}>
+              {errors.phone?.type === 'required' && "Campo obrigatório"}
+              {(errors.phone?.type === 'minLength' || errors.phone?.type === 'maxLength')
+                && "O telefone deve conter entre 10 a 11 caracteres"}
+              {errors.phone?.type === 'pattern' && "O telefone deve conter apenas números"}
+            </div>
           </div>
 
           {(role === "teacher" || role === "manager") &&
             <div className={styles.form__field}>
               <label htmlFor="schoolType">Tipo da escola</label>
-              <Select id="schoolType" color="secondary" 
+              <Select
+                id="schoolType"
+                color="secondary"
+                displayEmpty
+                sx={menuItemStyle}
                 {...register("schoolType", { required: true })}
-                value={schoolType} onChange={(e) => setSchoolType(e.target.value)}
+                value={schoolType}
+                onChange={(e) => setSchoolType(e.target.value)}
                 error={!!errors.schoolType}
-              >
+              > 
+                <MenuItem disabled value="" sx={menuItemStyle}>
+                  <div style={{ color: 'var(--color-gray-200)' }}>Selecione a escola</div>
+                </MenuItem>
                 {schoolTypes.map((option) => (
                   <MenuItem key={option.value} value={option.value} sx={menuItemStyle}>
                     {option.value}
                   </MenuItem>
                 ))}
               </Select>
-              {errors.school && <div className={styles.error__message}>Campo obrigatório</div>} 
+              {errors.schoolType && <div className={styles.error__message}>Campo obrigatório</div>}
             </div>
           }
         </div>
 
         <div className={styles.form__field}>
           <label htmlFor="email">E-mail</label>
-          <TextField id="email" type="text" color="secondary" 
-            placeholder="email@email.com.br" variant="outlined"
+          <TextField
+            id="email"
+            type="text"
+            color="secondary" 
+            placeholder="email@email.com.br"
+            variant="outlined"
             {...register("email", { required: true })}
             error={!!errors.email}
           />
@@ -125,7 +181,8 @@ function Form({ role }) {
         {(role === "teacher" || role === "manager") &&
           <div className={styles.form__field}>
             <label htmlFor="password">Senha</label>
-            <PasswordInput id="password"
+            <PasswordInput
+              id="password"
               register={() => register("password", { required: true, minLength: 6 })}
               error={!!errors.password}
             />
@@ -139,16 +196,22 @@ function Form({ role }) {
             <label htmlFor="terms">
               Li e aceito os <span>Termos de Uso</span> e a <span>Política de Privacidade</span>.
             </label>
-            <input id="terms" type="checkbox"
+            <Checkbox 
+              id="terms"
+              color="secondary"
+              size="medium"
+              icon={<img src={uncheckedIcon} alt="" />}
+              checkedIcon={<img src={checkedIcon} alt="" />}
               {...register("terms", { required: true })}
+              sx={{ marginLeft: "-0.5rem"}}
             />
           </div>
           {errors.terms && <div className={styles.error__message}>Campo obrigatório</div>}
         </div>
         
         <div className={styles.button__wrapper}>
-          <button type="submit" aria-label="cadastrar" className={styles.main__button}>Cadastrar</button>
-          <button onClick={backButton} aria-label="voltar" className={styles.secondary__button}>Voltar</button>
+          <Button main={true} type="submit" text="Cadastrar" label="cadastrar"  />
+          <Button main={false} text="Voltar" label="voltar" onClick={backButton} />
         </div>
       </form>
     </ThemeProvider>
