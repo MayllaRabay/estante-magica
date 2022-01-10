@@ -2,34 +2,38 @@
   border: 2px solid var(--color-gray-200);
   border-radius: 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   gap: 0.875rem;
   padding: 1.5rem 3.125rem;
   transition: all .5s;
-
-  &:hover {
-    background-color: var(--color-theme);
-  }
-
-  &:active {
-    border: 2px solid var(--color-purple-800);
-    color: var(--color-purple-800);
+  
+  h4 {
+    color: var(--color-purple-400);
+    text-decoration: none;
   }
 
   .img__container {
-    width: 80px;
-    height: 80px;
+    height: 6.5rem;
+    width: 6.5rem;
 
     img {
-      width: 100%;
       height: auto;
+      width: 100%;
     }
   }
 
-  h4 {
-    color: var(--color-purple-400);
-    letter-spacing: 0.02rem;
-    text-decoration: none;
+  &:hover {
+    background-color: var(--color-theme);
+    border: 2px solid var(--color-theme);
+  }
+
+  &:focus {
+    box-shadow: 0.5rem 0.5rem 0.2rem var(--color-purple-50)
+  }
+
+  &:active {
+    background-color: var(--color-purple-800);
+    border: 2px solid var(--color-purple-800);
   }
 }
