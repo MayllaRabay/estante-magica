@@ -3,7 +3,7 @@
 </h1>
 
 <h2 align="center"> 
-	🚧 Desafio Estante Mágica 🚀 em andamento... 🚧
+	🚀 Desafio Estante Mágica 🚀
 </h2>
 
 ## 💻 Sobre o projeto
