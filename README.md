@@ -9,8 +9,6 @@
 ## 💻 Sobre o projeto
  Desafio técnico de front-end para o processo seletivo da Estante Mágica. O objetivo é reproduzir as páginas do figma utilizando ReactJS e Arquitetura Limpa (se possível).
 
-<hr />
-
 ## 🎨 Layout
   Design retirado do [**figma**](https://www.figma.com/file/OMujw7wddHYhbLHpzZUe2l/Challenge-front-end?node-id=0%3A1).
 
